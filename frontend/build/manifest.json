@@ -1,0 +1,15 @@
+{
+  "short_name": "Zealthy",
+  "name": "Zealthy Patient Portal & Mini EMR",
+  "icons": [
+    {
+      "src": "zealthy-favicon.svg",
+      "sizes": "32x32",
+      "type": "image/svg+xml"
+    }
+  ],
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#10b981",
+  "background_color": "#ffffff"
+}
