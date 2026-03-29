@@ -361,7 +361,7 @@ const AdminEMR: React.FC = () => {
           </div>
 
           <div style={{ textAlign: 'center', marginTop: 20 }}>
-            <a href="/" style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            <a href="/" style={{ fontSize: 13, color: 'var(--primary)', fontWeight: 600 }}>
               ← Back to Patient Portal
             </a>
           </div>

@@ -19,7 +19,9 @@ function fmtDatetime(dt: string) {
 
 function fmtDate(d: string) {
   try {
-    return new Date(d + 'T00:00:00').toLocaleDateString('en-US', {
+    // Handle both date-only "2026-04-02" and full datetime "2026-04-02T16:30:00"
+    const dt = d.includes('T') ? new Date(d) : new Date(d + 'T00:00:00');
+    return dt.toLocaleDateString('en-US', {
       month: 'short', day: 'numeric', year: 'numeric',
     });
   } catch {
@@ -257,7 +259,7 @@ const PatientPortal: React.FC = () => {
           </form>
 
           <div style={{ textAlign: 'center', marginTop: 20, marginBottom: 4 }}>
-            <a href="/admin" style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+            <a href="/admin" style={{ fontSize: 13, color: 'var(--primary)', fontWeight: 600 }}>
               Admin Portal →
             </a>
           </div>
