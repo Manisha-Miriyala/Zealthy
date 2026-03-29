@@ -54,9 +54,21 @@ const SPECIALTIES = [
 const DOSAGES = ['1mg', '2mg', '3mg', '5mg', '10mg', '25mg', '50mg',
                  '100mg', '250mg', '500mg', '1000mg'];
 
+// ── Admin credentials (demo) ───────────────────────────────────────────────
+const ADMIN_EMAIL    = 'admin@zealthy.com';
+const ADMIN_PASSWORD = 'Admin123!';
+
 // ── Main Component ─────────────────────────────────────────────────────────
 
 const AdminEMR: React.FC = () => {
+  // Auth
+  const [adminLoggedIn, setAdminLoggedIn] = useState(
+    () => localStorage.getItem('adminLoggedIn') === 'true'
+  );
+  const [adminEmail, setAdminEmail]       = useState('');
+  const [adminPassword, setAdminPassword] = useState('');
+  const [adminLoginError, setAdminLoginError] = useState('');
+
   // View
   const [view, setView] = useState<'list' | 'detail'>('list');
   const [selectedPatient, setSelectedPatient] = useState<User | null>(null);
@@ -85,6 +97,25 @@ const AdminEMR: React.FC = () => {
   const [rxForm, setRxForm]           = useState<RxForm>(emptyRx);
   const [provForm, setProvForm]       = useState<ProvForm>(emptyProv);
   const [medForm, setMedForm]         = useState<MedForm>(emptyMed);
+
+  // ── Admin auth ───────────────────────────────────────────────────────────
+
+  const handleAdminLogin = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (adminEmail === ADMIN_EMAIL && adminPassword === ADMIN_PASSWORD) {
+      localStorage.setItem('adminLoggedIn', 'true');
+      setAdminLoggedIn(true);
+      setAdminLoginError('');
+    } else {
+      setAdminLoginError('Invalid admin credentials.');
+    }
+  };
+
+  const handleAdminLogout = () => {
+    localStorage.removeItem('adminLoggedIn');
+    setAdminLoggedIn(false);
+    setView('list');
+  };
 
   // ── Loaders ──────────────────────────────────────────────────────────────
 
@@ -263,6 +294,83 @@ const AdminEMR: React.FC = () => {
     p.email.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  // ── Render: Admin Login ───────────────────────────────────────────────────
+
+  if (!adminLoggedIn) {
+    return (
+      <div className="login-page">
+        <div className="login-card">
+          <div className="login-logo">
+            <div className="brand-mark">⚕</div>
+            <h1>Zealthy</h1>
+            <p>Admin Portal — sign in to continue</p>
+          </div>
+
+          <form onSubmit={handleAdminLogin}>
+            {adminLoginError && <div className="alert alert-error">⚠ {adminLoginError}</div>}
+            <div className="form-group">
+              <label className="form-label">Admin Email</label>
+              <input
+                className="form-control"
+                type="email"
+                required
+                autoComplete="email"
+                value={adminEmail}
+                onChange={e => setAdminEmail(e.target.value)}
+                placeholder="admin@zealthy.com"
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Password</label>
+              <input
+                className="form-control"
+                type="password"
+                required
+                autoComplete="current-password"
+                value={adminPassword}
+                onChange={e => setAdminPassword(e.target.value)}
+                placeholder="••••••••"
+              />
+            </div>
+            <button
+              type="submit"
+              className="btn btn-primary btn-lg"
+              style={{ width: '100%', justifyContent: 'center', marginTop: 8 }}
+            >
+              Sign In to Admin
+            </button>
+          </form>
+
+          <div className="demo-creds">
+            <strong>Demo Admin Credentials</strong>
+            <div className="demo-cred-row">
+              <span>Admin</span>
+              <div style={{ display: 'flex', gap: 6, alignItems: 'center', flexWrap: 'wrap' }}>
+                <code>{ADMIN_EMAIL}</code>
+                <span>/</span>
+                <code>{ADMIN_PASSWORD}</code>
+                <button
+                  type="button"
+                  className="btn btn-ghost btn-sm"
+                  style={{ padding: '2px 8px', fontSize: 11 }}
+                  onClick={() => { setAdminEmail(ADMIN_EMAIL); setAdminPassword(ADMIN_PASSWORD); }}
+                >
+                  Use
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ textAlign: 'center', marginTop: 20 }}>
+            <a href="/" style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+              ← Back to Patient Portal
+            </a>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
   // ── Render: Patient List View ─────────────────────────────────────────────
 
   if (view === 'list') {
@@ -286,6 +394,9 @@ const AdminEMR: React.FC = () => {
             </button>
             <button className="btn btn-primary btn-sm" onClick={() => openModal('patient')}>
               + New Patient
+            </button>
+            <button className="btn btn-ghost btn-sm" onClick={handleAdminLogout}>
+              Sign Out
             </button>
           </div>
         </nav>
@@ -407,6 +518,11 @@ const AdminEMR: React.FC = () => {
           <div className="nav-divider" />
           <span className="page-title">Patient Record</span>
           <div className="spacer" />
+          <div className="nav-actions">
+            <button className="btn btn-ghost btn-sm" onClick={handleAdminLogout}>
+              Sign Out
+            </button>
+          </div>
         </nav>
 
         <div className="page-content">

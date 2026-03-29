@@ -257,6 +257,12 @@ const PatientPortal: React.FC = () => {
             </button>
           </form>
 
+          <div style={{ textAlign: 'center', marginTop: 20, marginBottom: 4 }}>
+            <a href="/admin" style={{ fontSize: 13, color: 'var(--text-muted)' }}>
+              Admin Portal →
+            </a>
+          </div>
+
           <div className="demo-creds">
             <strong>Demo Credentials</strong>
             {[
