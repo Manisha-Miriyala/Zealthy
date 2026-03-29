@@ -14,7 +14,8 @@
   ],
   "routes": [
     { "src": "/api/(.*)", "dest": "api/index.py" },
-    { "handle": "filesystem" },
-    { "src": "/(.*)", "dest": "/index.html" }
+    { "src": "^/static/(.*)", "dest": "/static/$1" },
+    { "src": "^.*\\.(js|css|png|svg|ico|json|txt|map|woff|woff2)$", "dest": "/$0" },
+    { "src": "^.*$", "dest": "/index.html" }
   ]
 }
