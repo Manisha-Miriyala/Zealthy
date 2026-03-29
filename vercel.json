@@ -1,21 +1,7 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/index.py",
-      "use": "@vercel/python",
-      "config": { "maxLambdaSize": "50mb" }
-    },
-    {
-      "src": "frontend/package.json",
-      "use": "@vercel/static-build",
-      "config": { "distDir": "build" }
-    }
-  ],
-  "routes": [
-    { "src": "/api/(.*)", "dest": "api/index.py" },
-    { "src": "^/static/(.*)", "dest": "/static/$1" },
-    { "src": "^.*\\.(js|css|png|svg|ico|json|txt|map|woff|woff2)$", "dest": "/$0" },
-    { "src": "^.*$", "dest": "/index.html" }
+  "buildCommand": "cd frontend && npm install && npm run build",
+  "outputDirectory": "frontend/build",
+  "rewrites": [
+    { "source": "/:path*", "destination": "/index.html" }
   ]
 }
