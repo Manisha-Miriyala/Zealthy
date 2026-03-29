@@ -216,8 +216,7 @@ const PatientPortal: React.FC = () => {
       <div className="login-page">
         <div className="login-card">
           <div className="login-logo">
-            <div className="brand-mark">⚕</div>
-            <h1>Zealthy</h1>
+            <img src="/zealthy-logo.svg" alt="Zealthy" style={{ height: 30, marginBottom: 16 }} />
             <p>Patient Portal — sign in to your account</p>
           </div>
 
@@ -302,8 +301,7 @@ const PatientPortal: React.FC = () => {
       {/* Nav */}
       <nav className="top-nav">
         <div className="brand">
-          <div className="brand-icon">⚕</div>
-          Zealthy
+          <img src="/zealthy-logo.svg" alt="Zealthy" style={{ height: 18, width: 'auto' }} />
         </div>
         <div className="nav-divider" />
         <div style={{ display: 'flex', gap: 4 }}>

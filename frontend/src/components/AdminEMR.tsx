@@ -301,8 +301,7 @@ const AdminEMR: React.FC = () => {
       <div className="login-page">
         <div className="login-card">
           <div className="login-logo">
-            <div className="brand-mark">⚕</div>
-            <h1>Zealthy</h1>
+            <img src="/zealthy-logo.svg" alt="Zealthy" style={{ height: 30, marginBottom: 16 }} />
             <p>Admin Portal — sign in to continue</p>
           </div>
 
@@ -379,8 +378,7 @@ const AdminEMR: React.FC = () => {
         {/* Nav */}
         <nav className="top-nav">
           <div className="brand">
-            <div className="brand-icon">⚕</div>
-            Zealthy
+            <img src="/zealthy-logo.svg" alt="Zealthy" style={{ height: 18, width: 'auto' }} />
           </div>
           <div className="nav-divider" />
           <span className="page-title">Mini EMR</span>
@@ -512,8 +510,7 @@ const AdminEMR: React.FC = () => {
         {/* Nav */}
         <nav className="top-nav">
           <div className="brand">
-            <div className="brand-icon">⚕</div>
-            Zealthy
+            <img src="/zealthy-logo.svg" alt="Zealthy" style={{ height: 18, width: 'auto' }} />
           </div>
           <div className="nav-divider" />
           <span className="page-title">Patient Record</span>

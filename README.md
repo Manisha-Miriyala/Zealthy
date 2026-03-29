@@ -8,9 +8,9 @@ A modern Electronic Medical Records (EMR) system with two portals: a **Patient P
 
 | Portal | URL |
 |--------|-----|
-| Patient Portal | — |
-| Admin Portal | — |
-| Backend API | — |
+| Patient Portal | https://zealthy-tau.vercel.app/ |
+| Admin Portal | https://zealthy-tau.vercel.app/admin |
+| Backend API | https://zealthy-tau.vercel.app/api |
 
 ---
 
@@ -34,6 +34,8 @@ A modern Electronic Medical Records (EMR) system with two portals: a **Patient P
 
 ## Demo Credentials
 
+### Patient Portal
+
 Two patients are pre-loaded for testing:
 
 | Name | Email | Password |
@@ -43,7 +45,13 @@ Two patients are pre-loaded for testing:
 
 On the Patient Portal login screen, click the **"Use"** button next to either name to auto-fill the credentials.
 
-The Admin Portal at `/admin` requires no login.
+### Admin Portal
+
+| Role | Email | Password |
+|------|-------|----------|
+| Admin | admin@zealthy.com | Admin123! |
+
+The Admin Portal is protected by a login gate. Use the **"Use"** button on the admin login screen to auto-fill the credentials. A link to the Admin Portal is also visible on the Patient Portal login page.
 
 ---
 
@@ -195,4 +203,3 @@ Interactive API documentation (auto-generated) is available at:
 [![Vercel](https://img.shields.io/badge/Vercel-Frontend-black?logo=vercel)](https://vercel.com/)
 [![Railway](https://img.shields.io/badge/Railway-Backend-purple?logo=railway)](https://railway.app/)
 
-> Live URLs will be added after deployment.
