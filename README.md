@@ -11,7 +11,6 @@ A modern Electronic Medical Records (EMR) system with two protected portals: a *
 | Patient Portal | https://zealthy-tau.vercel.app/ |
 | Admin Portal | https://zealthy-tau.vercel.app/admin |
 | Backend API | https://zealthy-tau.vercel.app/api |
-| API Docs (Swagger) | https://zealthy-tau.vercel.app/api/docs |
 
 ---
 
@@ -155,7 +154,7 @@ Zealthy/
 
 ## API Overview
 
-All endpoints are prefixed with `/api`. Full interactive documentation is available at `/api/docs`.
+All endpoints are prefixed with `/api`.
 
 ### Authentication
 | Method | Endpoint | Description |
